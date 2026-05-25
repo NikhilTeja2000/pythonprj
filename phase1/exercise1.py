@@ -1,6 +1,7 @@
 """
 Write a script that takes user input and prints whether a number is odd or even.
 """
+from lib2to3.fixes.fix_input import context
 
 num=int(input("Enter the number to check if its even or odd: "))
 
@@ -79,6 +80,74 @@ while True:
         input4= input("Try to enter again: ")
 
 
+
+
+
+"""
+1. Ask student name
+2. Ask marks
+3. Calculate grade
+4. Store student as dictionary
+5. Add multiple students into a list
+6. Use function to calculate grade
+7. Use try/except for invalid marks
+8. Write final students to a file
+"""
+
+student=int(input("Enter the number of the students:"))
+
+
+list={}
+for a in range(student):
+    sname=input("enter student name:")
+    subs=["Maths","Phy","Che"]
+    smarks={}
+    for b in range(3):
+        try:
+            smarks[subs[b]]=float(input(f'enter marks in {subs[b]}'))
+        except:
+            print("enter valid marks")
+    list[sname]=smarks
+print(list)
+
+def calgrade(values):
+    print("The marks are:",values)
+    return sum(values.values())
+def calstopper(values):
+    clstopper={}
+    maxs=0
+    topper=""
+    for a in values:
+        j=sum(values[a].values())
+        clstopper[a]=j
+        if j>maxs:
+            maxs=j
+            topper=a
+    return topper,maxs
+
+def addmarks():
+
+    with open('marks.txt','w') as ma:
+        #ma.write(str(list))
+        a,b=calstopper(list)
+        print("checking before..how list looks like: ", list)
+        for val in list:
+            ma.write(f'{val} : {list[val]} \n')
+        ma.write(f'the class topper is: {a} with the marks of : {b}\n')
+
+
+
+
+for a in list:
+    print(f'The total marks for {a} are {calgrade(list[a])}')
+
+def main():
+    try:
+        addmarks()
+    except:
+        print("there is no such file.")
+
+main()
 
 
 
