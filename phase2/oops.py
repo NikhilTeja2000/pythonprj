@@ -131,3 +131,25 @@ print(s3.salary)
 # Using Computed Properites
 print(s2.annual_salary)
 
+
+#Same emp example..
+class Employed():
+
+    def __init__(self,salary):
+        self.salary= salary
+
+    @property
+    def salary(self):
+        return self._salary
+
+    @salary.setter
+    def salary(self,value):
+        if value<0:
+            raise ValueError("Salary cannot be -ve")
+        self._salary=value
+
+
+
+
+e1=Employed(5000)
+print(e1.salary)
