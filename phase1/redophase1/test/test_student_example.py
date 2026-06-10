@@ -1,6 +1,6 @@
 import unittest
 from phase1.redophase1.student_example import StudentExample
-
+from phase1.redophase1.student_example import StudentReport
 class MyTestCase(unittest.TestCase):
 
     def test_add_student_marks(self):
@@ -26,7 +26,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(answer,[5,2])
 
     def test_add_students_to_file(self):
-        value=StudentExample(2)
+        value=StudentReport(2)
         #value.students=[{"Mkin": [2, 3]},
          #               {"Josh": [1, 1]}]
         value.add_students("Nikhil", [2, 3])
@@ -38,7 +38,7 @@ class MyTestCase(unittest.TestCase):
         with open(path, "r") as file:
             content = file.read()
 
-        self.assertEqual(content, str(value._students))
+        self.assertEqual(content, str(value.get_students()))
 
 
     def test_calcualte_marks(self):
